@@ -15,8 +15,12 @@ var fs = require('fs');
   
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('http://localhost:3000/');
-await page.reload('http://localhost:3000')
+    await page.goto('http://example.com');
+    await page.reload('http://example.com');
+    await page.setViewport({
+      width:1200,
+      height:800
+    });
     await page.screenshot({path: './output/example1.png'});
     
     const image1 = fs.readFileSync("initialPage.png");
@@ -35,13 +39,17 @@ await page.reload('http://localhost:3000')
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000/');
-  await page.reload('http://localhost:3000');
+  await page.goto('http://example.com');
+  await page.reload('http://example.com');
+  await page.setViewport({
+    width:1200,
+    height:800
+  });
   await page.click('#odd');
   await page.screenshot({path: './output/example2.png',
 fullPage:true});
   
-  const image3 = fs.readFileSync("afterClickingOdd.png");
+  const image3 = fs.readFileSync("onClickOdd.png");
   const image4 = fs.readFileSync("output/example2.png");
 
   const diffpercent = await getDiff(
@@ -56,13 +64,17 @@ fullPage:true});
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('http://localhost:3000/');
-await page.reload('http://localhost:3000');
+    await page.goto('http://example.com');
+    await page.reload('http://example.com');
+await page.setViewport({
+  width:1200,
+  height:800
+});
     await page.click('#even');
     await page.screenshot({path: './output/example3.png',
   fullPage:true});
     
-    const image5 = fs.readFileSync("afterClickingEven.png");
+    const image5 = fs.readFileSync("onClickEven.png");
     const image6 = fs.readFileSync("output/example3.png");
   
     const diffpercent = await getDiff(
@@ -77,13 +89,17 @@ await page.reload('http://localhost:3000');
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('http://localhost:3000/');
-    await page.reload('http://localhost:3000');
+    await page.goto('http://example.com');
+    await page.reload('http://example.com');
+    await page.setViewport({
+      width:1200,
+      height:800
+    });
     await page.click('#reset');
     await page.screenshot({path: './output/example4.png',
   fullPage:true});
     
-    const image5 = fs.readFileSync("afterClickingReset.png");
+    const image5 = fs.readFileSync("onClickReset.png");
     const image6 = fs.readFileSync("output/example4.png");
   
     const diffpercent = await getDiff(
