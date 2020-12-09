@@ -15,16 +15,16 @@ var fs = require('fs');
   
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('http://localhost:4200/');
-    await page.reload('http://loaclhost:4200/');
+    await page.goto('https://example.com/');
+    await page.reload('https://example.com/');
     await page.setViewport({
       width:1200,
       height:800
     })
-    await page.screenshot({path: './output/example1.png',fullPage:true});
+    await page.screenshot({path: './screenshot/output/example1.png',fullPage:true});
     
-    const image1 = fs.readFileSync("initialPage.png");
-    const image2 = fs.readFileSync("output/example1.png");
+    const image1 = fs.readFileSync("./screenshot/initialPage.png");
+    const image2 = fs.readFileSync("./screenshot/output/example1.png");
   
     const diffpercent = await getDiff(
       image1 ,
@@ -39,16 +39,16 @@ var fs = require('fs');
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:4200/');
+  await page.goto('https://example.com/');
   await page.setViewport({
     width:1200,
     height:800,
   })
   await page.click('body > app-root > app-header > div > div > div.submit > button');
-  await page.screenshot({path: './output/example2.png'});
+  await page.screenshot({path: './screenshot/output/example2.png'});
   
-  const image3 = fs.readFileSync("afterClickSubmit.png");
-  const image4 = fs.readFileSync("output/example2.png");
+  const image3 = fs.readFileSync("./screenshot/afterClickSubmit.png");
+  const image4 = fs.readFileSync("./screenshot/output/example2.png");
 
   const diffpercent = await getDiff(
     image3 ,
